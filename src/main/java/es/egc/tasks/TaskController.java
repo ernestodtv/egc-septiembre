@@ -14,12 +14,12 @@ public class TaskController {
     @Autowired
 	private TaskService taskService;
 
-    @RequestMapping(value = "/tasks")
+    @RequestMapping(value = "/tareas")
     public Iterable<Task> tasks() {
         return taskService.getAllTasks();
     }
 
-    @RequestMapping(value = "/tasks", method = RequestMethod.POST)
+    @RequestMapping(value = "/tareas", method = RequestMethod.POST)
     public ResponseEntity<?> addGreeting(@RequestBody Task task) {
         Task t = taskService.add(new Task(task.getName(), task.getContext()));
 
@@ -29,7 +29,7 @@ public class TaskController {
     }
 
 
-    @RequestMapping(value = "/tasks/{taskId}")
+    @RequestMapping(value = "/tareas/{taskId}")
     public Task taskById(@PathVariable Long taskId) {
         return taskService.getTask(taskId);
     }
